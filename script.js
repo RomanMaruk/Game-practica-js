@@ -114,6 +114,7 @@ function shutingBullet(bullet) {
 
 function isBoom(bullet) {
     let enemy = document.querySelector('.enemy');
+    let boom = document.querySelector('.boom');
 
     if (bullet.offsetTop > enemy.offsetTop
         && bullet.offsetTop < enemy.offsetTop + enemy.clientHeight
@@ -121,8 +122,18 @@ function isBoom(bullet) {
             bullet.remove();
             enemy.remove();
             createEnemy();
+            createBoom();
     }
+        
+       setTimeout(() => {
+        boom.remove();
+       }, 400) 
+}
 
+function createBoom() {
+    let boom = document.createElement('div');
+    boom.className = 'boom';
+    game.append(boom);
 }
 
 
